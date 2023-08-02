@@ -14,6 +14,7 @@ import { APP_GUARD } from '@nestjs/core';
 import { RolesGuard } from './users-role/guards/userrs-role.guard';
 import { MailerModule } from './mailer/mailer.module';
 import { CategoryModule } from './category/category.module';
+import { Category } from './category/entities/category.entity';
 dotenv.config({ path: __dirname + '/../.env' });
 
 @Module({
@@ -25,7 +26,7 @@ dotenv.config({ path: __dirname + '/../.env' });
       username: process.env.MYSQL_USERNAME,
       password: process.env.MYSQL_PASSWORD,
       database: process.env.MYSQL_DATABASE,
-      entities: [User, UsersRole, News],
+      entities: [User, UsersRole, News, Category],
       synchronize: true,
     }),
     UserModule,
