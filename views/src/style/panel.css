@@ -1,0 +1,116 @@
+*{
+    --lightMainColor: white;
+    --lightTextColor: black;
+    --darkMainColor: black;
+    --darkTextColor: white;
+}
+
+body{
+    color: var(--lightTextColor);
+    background-color: var(--lightMainColor);
+}
+
+.nav-bar{
+    padding: 10px 25px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.panel-logo{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.panel-logo h2{
+    margin: 20px 0 0 0;
+}
+
+.panel-logo p{
+    margin: 0 0 20px 0;
+}
+
+.navigation-list a {
+    text-decoration: none;
+    color: var(--lightTextColor);
+    margin: 25px 10px;
+    font-size: 20px;
+}
+
+.section{
+    margin: 50px 50px;
+    min-height: 250px;
+    display: flex;
+    padding: 50px;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 500px;
+}
+
+#welcome-header .header-content{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    font-size: 28px;
+}
+
+.header-content h1{
+    margin: 34px 0 0 0;
+}
+
+.header-content p{
+    margin: 0 0 34px 0;
+}
+
+#welcome-header .header-image{
+    background-image: url('../images/header-image.svg');
+    width: 50%;
+    height: 350px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.section .grid{
+    display: grid;
+    gap: 25px 100px;
+    grid-template-columns: auto auto auto;
+}
+
+.grid .element-container{
+    width: 450px;
+    height: 450px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid var(--lightTextColor);
+    font-size: 22px;
+    border-radius: 50px;
+}
+
+@media (prefers-color-scheme: dark) {
+    body{
+        color: var(--darkTextColor);
+        background-color: var(--darkMainColor);
+    }
+    .navigation-list a {
+        color: var(--darkTextColor);
+    }   
+    #welcome-header .header-image{
+        background-image: url('../images/header-image-dark.svg');
+    }
+    .grid .element-container{
+        border: 1px solid var(--darkTextColor);
+    }
+}
