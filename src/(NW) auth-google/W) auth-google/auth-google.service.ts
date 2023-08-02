@@ -3,7 +3,7 @@ import { ConfigService } from '@nestjs/config';
 import { OAuth2Client } from 'google-auth-library';
 import { AuthGoogleLoginDto } from './dto/auth-google-login.dto';
 import { SocialInterface } from 'src/(NW) social/interfaces/social.interface';
-import { AllConfigType } from 'src/config/config.type';
+import { AllConfigType } from 'src/config/(NW) config.type';
 import * as dotenv from 'dotenv';
 dotenv.config({ path: __dirname + '/../../.env' });
 

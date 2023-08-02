@@ -1,6 +1,6 @@
 import { registerAs } from '@nestjs/config';
-import { GoogleConfig } from './config.type';
-import validateConfig from 'src/utils/validate-config';
+import { GoogleConfig } from './(NW) config.type';
+import validateConfig from 'src/(NW) utils/validate-config';
 
 class EnvironmentVariablesValidator {
   GOOGLE_CLIENT_ID: string;
