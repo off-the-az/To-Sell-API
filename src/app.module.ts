@@ -15,6 +15,8 @@ import { RolesGuard } from './users-role/guards/userrs-role.guard';
 import { MailerModule } from './mailer/mailer.module';
 import { CategoryModule } from './category/category.module';
 import { Category } from './category/entities/category.entity';
+import { AttributeModule } from './attribute/attribute.module';
+import { Attribute } from './attribute/entities/attribute.entity';
 dotenv.config({ path: __dirname + '/../.env' });
 
 @Module({
@@ -26,7 +28,7 @@ dotenv.config({ path: __dirname + '/../.env' });
       username: process.env.MYSQL_USERNAME,
       password: process.env.MYSQL_PASSWORD,
       database: process.env.MYSQL_DATABASE,
-      entities: [User, UsersRole, News, Category],
+      entities: [User, UsersRole, News, Category, Attribute],
       synchronize: true,
     }),
     UserModule,
@@ -35,6 +37,7 @@ dotenv.config({ path: __dirname + '/../.env' });
     NewsModule,
     MailerModule,
     CategoryModule,
+    AttributeModule,
   ],
   controllers: [AppController],
   providers: [
