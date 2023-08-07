@@ -19,6 +19,8 @@ import { AttributeModule } from './attribute/attribute.module';
 import { Attribute } from './attribute/entities/attribute.entity';
 import { AttributesValueModule } from './attributes-value/attributes-value.module';
 import { AttributesValue } from './attributes-value/entities/attributes-value.entity';
+import { CategoriesAttributeModule } from './categories-attribute/categories-attribute.module';
+import { CategoriesAttribute } from './categories-attribute/entities/categories-attribute.entity';
 dotenv.config({ path: __dirname + '/../.env' });
 
 @Module({
@@ -30,7 +32,7 @@ dotenv.config({ path: __dirname + '/../.env' });
       username: process.env.MYSQL_USERNAME,
       password: process.env.MYSQL_PASSWORD,
       database: process.env.MYSQL_DATABASE,
-      entities: [User, UsersRole, News, Category, Attribute, AttributesValue],
+      entities: [User, UsersRole, News, Category, Attribute, AttributesValue, CategoriesAttribute],
       synchronize: true,
     }),
     UserModule,
@@ -41,6 +43,7 @@ dotenv.config({ path: __dirname + '/../.env' });
     CategoryModule,
     AttributeModule,
     AttributesValueModule,
+    CategoriesAttributeModule,
   ],
   controllers: [AppController],
   providers: [
