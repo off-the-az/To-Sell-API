@@ -21,6 +21,24 @@ import { AttributesValueModule } from './attributes-value/attributes-value.modul
 import { AttributesValue } from './attributes-value/entities/attributes-value.entity';
 import { CategoriesAttributeModule } from './categories-attribute/categories-attribute.module';
 import { CategoriesAttribute } from './categories-attribute/entities/categories-attribute.entity';
+import { TicketsProductListModule } from './tickets-product-list/tickets-product-list.module';
+import { ProductsCategoryModule } from './products-category/products-category.module';
+import { ProductsPhotoListModule } from './products-photo-list/products-photo-list.module';
+import { ProductsModule } from './products/products.module';
+import { ShopsModule } from './shops/shops.module';
+import { OrderStatusModule } from './order-status/order-status.module';
+import { TicketModule } from './ticket/ticket.module';
+import { CartModule } from './cart/cart.module';
+import { ReviewsModule } from './reviews/reviews.module';
+import { Shop } from "./shops/entities/shop.entity";
+import { Product } from './products/entities/product.entity';
+import { ProductsCategory } from './products-category/entities/products-category.entity';
+import { ProductsPhotoList } from './products-photo-list/entities/products-photo-list.entity';
+import { Review } from './reviews/entities/review.entity';
+import { OrderStatus } from './order-status/entities/order-status.entity';
+import { Ticket } from './ticket/entities/ticket.entity';
+import { TicketsProductList } from './tickets-product-list/entities/tickets-product-list.entity';
+import { Cart } from './cart/entities/cart.entity';
 dotenv.config({ path: __dirname + '/../.env' });
 
 @Module({
@@ -32,7 +50,7 @@ dotenv.config({ path: __dirname + '/../.env' });
       username: process.env.MYSQL_USERNAME,
       password: process.env.MYSQL_PASSWORD,
       database: process.env.MYSQL_DATABASE,
-      entities: [User, UsersRole, News, Category, Attribute, AttributesValue, CategoriesAttribute],
+      entities: [User, UsersRole, News, Category, Attribute, AttributesValue, CategoriesAttribute, Shop, Product, ProductsCategory, ProductsPhotoList, Review, OrderStatus, Ticket, TicketsProductList, Cart],
       synchronize: true,
     }),
     UserModule,
@@ -44,6 +62,15 @@ dotenv.config({ path: __dirname + '/../.env' });
     AttributeModule,
     AttributesValueModule,
     CategoriesAttributeModule,
+    TicketModule,
+    CartModule,
+    ReviewsModule,
+    OrderStatusModule,
+    ShopsModule,
+    ProductsModule,
+    ProductsPhotoListModule,
+    ProductsCategoryModule,
+    TicketsProductListModule,
   ],
   controllers: [AppController],
   providers: [
