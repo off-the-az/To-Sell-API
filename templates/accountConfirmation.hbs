@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>App</title>
+  </head>
+  <body>
+    <main style="font-size: 22px;">
+      Шановний, {{username}} <br />
+      Ми отримали інформацію про вашу реєстрацію на нашому сервісі.<br />
+      Задля відкриття усіх можливостей нашої системи, просимо вас підтвердити свій акаунт! Перейшовши по посиланню нижче!<br />
+    </main>
+    <a href="http://localhost:3000/api/auth/verify/{{mail}}" style="text-decoration: none;"><button
+      style="width: 180px; height: 50px; border-radius: 30px; border: none; padding: 5px 10px; margin: 15px 0px; background-color: rgba(0, 204, 255, 0.791); font-size: 14px; color: black;"
+    >Підтвердити аккаунт</button></a>
+ </body>
+</html>

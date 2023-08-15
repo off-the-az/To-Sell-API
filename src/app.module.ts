@@ -12,7 +12,7 @@ import { News } from './news/entities/news.entity';
 import { AuthModule } from './auth/auth.module';
 import { APP_GUARD } from '@nestjs/core';
 import { RolesGuard } from './users-role/guards/userrs-role.guard';
-import { MailerModule } from './mailer/mailer.module';
+import { MaillerModule } from './mailer/mailer.module';
 import { CategoryModule } from './category/category.module';
 import { Category } from './category/entities/category.entity';
 import { AttributeModule } from './attribute/attribute.module';
@@ -57,7 +57,7 @@ dotenv.config({ path: __dirname + '/../.env' });
     UsersRoleModule,
     AuthModule,
     NewsModule,
-    MailerModule,
+    MaillerModule,
     CategoryModule,
     AttributeModule,
     AttributesValueModule,

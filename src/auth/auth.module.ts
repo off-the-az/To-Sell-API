@@ -4,6 +4,7 @@ import { AuthController } from './auth.controller';
 import { JwtModule } from '@nestjs/jwt';
 import * as dotenv from 'dotenv';
 import { UserModule } from 'src/user/user.module';
+import { MaillerModule } from 'src/mailer/mailer.module';
 dotenv.config({ path: __dirname + '/../../.env' });
 
 @Module({
@@ -16,6 +17,7 @@ dotenv.config({ path: __dirname + '/../../.env' });
         expiresIn: '60s',
       },
     }),
+    MaillerModule
   ],
   controllers: [AuthController],
   providers: [AuthService],

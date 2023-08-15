@@ -3,12 +3,15 @@ import { JwtService } from '@nestjs/jwt';
 import { UserService } from 'src/user/user.service';
 import * as bcrypt from 'bcrypt';
 import { CreateUserDto } from 'src/user/dto/create-user.dto';
+import { MaillerService } from 'src/mailer/mailer.service';
+import { Role } from 'src/users-role/constants/users-role.enum';
 
 @Injectable()
 export class AuthService {
   constructor(
     private userService: UserService,
     private jwtService: JwtService,
+    private readonly maillerService: MaillerService,
   ) {}
 
   async verify(mail: any): Promise<any> {
@@ -36,8 +39,9 @@ export class AuthService {
     }
     return null;
   }
-  async register(userDTO: CreateUserDto): Promise<any> {
+  async register(userDTO: CreateUserDto): Promise<any>{
     userDTO.password = await bcrypt.hash(userDTO.password, 10);
+    await this.maillerService.sendVarificationMail(userDTO.mail, userDTO.name);
     return await this.userService.addUser(userDTO);
   }
 
