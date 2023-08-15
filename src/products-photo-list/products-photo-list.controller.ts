@@ -1,8 +1,13 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, UseGuards } from '@nestjs/common';
 import { ProductsPhotoListService } from './products-photo-list.service';
 import { CreateProductsPhotoListDto } from './dto/create-products-photo-list.dto';
 import { UpdateProductsPhotoListDto } from './dto/update-products-photo-list.dto';
+import { AuthGuard } from 'src/auth/guards/auth.guard';
+import { Role } from 'src/users-role/constants/users-role.enum';
+import { Roles } from 'src/users-role/decorators/users-role.decorator';
 
+@UseGuards(AuthGuard)
+@Roles(Role.Seller)
 @Controller('api/products-photo-list')
 export class ProductsPhotoListController {
   constructor(private readonly productsPhotoListService: ProductsPhotoListService) {}

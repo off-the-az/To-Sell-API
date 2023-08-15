@@ -1,8 +1,13 @@
-import { Controller, Get, Post, Body, Param, Delete, Put } from '@nestjs/common';
+import { Controller, Get, Post, Body, Param, Delete, Put, UseGuards } from '@nestjs/common';
 import { CategoriesAttributeService } from './categories-attribute.service';
 import { CreateCategoriesAttributeDto } from './dto/create-categories-attribute.dto';
 import { UpdateCategoriesAttributeDto } from './dto/update-categories-attribute.dto';
+import { AuthGuard } from 'src/auth/guards/auth.guard';
+import { Role } from 'src/users-role/constants/users-role.enum';
+import { Roles } from 'src/users-role/decorators/users-role.decorator';
 
+@UseGuards(AuthGuard)
+@Roles(Role.Admin, Role.Seller)
 @Controller('categories-attribute')
 export class CategoriesAttributeController {
   constructor(private readonly categoriesAttributeService: CategoriesAttributeService) {}

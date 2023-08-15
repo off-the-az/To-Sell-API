@@ -6,11 +6,17 @@ import {
   Param,
   Delete,
   Put,
+  UseGuards,
 } from '@nestjs/common';
 import { ShopsService } from './shops.service';
 import { CreateShopDto } from './dto/create-shop.dto';
 import { UpdateShopDto } from './dto/update-shop.dto';
+import { Roles } from 'src/users-role/decorators/users-role.decorator';
+import { Role } from 'src/users-role/constants/users-role.enum';
+import { AuthGuard } from 'src/auth/guards/auth.guard';
 
+@UseGuards(AuthGuard)
+@Roles(Role.Seller)
 @Controller('api/shops')
 export class ShopsController {
   constructor(private readonly shopsService: ShopsService) {}
