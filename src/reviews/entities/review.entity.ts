@@ -16,6 +16,9 @@ export class Review {
     stars: number;
     @Column({ length: 500 })
     comment: string;
-    @Column({ default: Date.now(), type: 'date' })
+    @Column({
+        type: 'datetime',
+        default: () => 'NOW()',
+      })
     date: string;
 }

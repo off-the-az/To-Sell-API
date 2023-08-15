@@ -14,6 +14,9 @@ export class Ticket {
     address: string;
     @Column()
     totalSum: number;
-    @Column({default: Date.now()})
+    @Column({
+        type: 'datetime',
+        default: () => 'NOW()',
+      })
     date: string;
 }
