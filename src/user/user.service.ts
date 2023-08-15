@@ -28,8 +28,7 @@ export class UserService {
   async getUserByMail(mail: string) {
     return await this.userRepository
       .createQueryBuilder('user')
-      .select('user.id', 'user.mail')
-      .addSelect('user.password')
+      .leftJoinAndSelect('user.userRole', 'usersRole.id')
       .where('user.mail = :mail', { mail })
       .getOne();
   }

@@ -14,14 +14,12 @@ export class AuthService {
     private readonly maillerService: MaillerService,
   ) {}
 
-  async verify(mail: any): Promise<any> {
+  async verify(mail: string): Promise<any> {
     const user = await this.userService.getUserByMail(mail);
     if (!user) throw new NotAcceptableException('could not find user');
-    else {
-      user.isVerified = true;
-      await this.userService.updateUser(user, mail);
-      return true;
-    }
+    user.isVerified = true;
+    await this.userService.updateUser(user, mail);
+    return 'Mail is verified!';
   }
   async signIn(mail: string, password: string): Promise<any> {
     const user = await this.userService.getUserByMail(mail);

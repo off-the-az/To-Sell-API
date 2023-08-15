@@ -5,14 +5,20 @@ import {
   UseGuards,
   Get,
   Request,
+  NotAcceptableException,
 } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { AuthGuard } from './guards/auth.guard';
 import { CreateUserDto } from 'src/user/dto/create-user.dto';
+import { UserService } from 'src/user/user.service';
+import { Role } from 'src/users-role/constants/users-role.enum';
 
 @Controller('/api/auth')
 export class AuthController {
-  constructor(private authService: AuthService) {}
+  constructor(
+    private authService: AuthService,
+    private userService: UserService,  
+  ) {}
 
   @Post('signin')
   async signIn(
@@ -24,7 +30,8 @@ export class AuthController {
 
   @Post('register')
   async register(@Body() userDTO: CreateUserDto): Promise<any> {
-    return await this.authService.register(userDTO);
+    if(userDTO.userRole[0] != Role.Admin) return await this.authService.register(userDTO);
+    else return await new NotAcceptableException('Cannot register user with role "Admin"!').message;
   }
 
   @Get('profile')
@@ -40,6 +47,10 @@ export class AuthController {
 
   @Get('verify/:mail')
   async verifyUser(@Request() req): Promise<any> {
+    const user = await this.userService.getUserByMail(req.params.mail as string);
+    if(!user) return new NotAcceptableException('User not found. Invalid mail address!');
+    console.log(user);
+    if(user.isVerified) return new NotAcceptableException('User was verified earlier!');
     return await this.authService.verify(req.params.mail);
   }
 }
