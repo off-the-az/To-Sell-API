@@ -5,6 +5,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Product } from './entities/product.entity';
 import { Repository } from 'typeorm';
 import { ProductsCategoryService } from 'src/products-category/products-category.service';
+import { CategoriesAttributeService } from 'src/categories-attribute/categories-attribute.service';
 
 @Injectable()
 export class ProductsService {
@@ -12,6 +13,7 @@ export class ProductsService {
   constructor(
     @InjectRepository(Product) private productRepository: Repository<Product>,
     private readonly productsCategoryService: ProductsCategoryService,
+    private readonly categoriesAttributeService : CategoriesAttributeService,
   ){}
 
   async create(createProductDto: CreateProductDto) {
@@ -43,6 +45,10 @@ export class ProductsService {
 
   async findOneByCategoriesId(id: number) {
     return await this.productsCategoryService.findAllByCategory(+id);
+  }
+
+  async findOneByAttributesId(id: number) {
+    return await this.categoriesAttributeService.findOneByAttributeId(+id);
   }
 
   async update(id: number, updateProductDto: UpdateProductDto) {

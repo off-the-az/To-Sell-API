@@ -24,31 +24,31 @@ export class CategoriesAttributeService {
     }
   }
 
-  findAll() {
-    return this.catAttRepository.createQueryBuilder('categoriesAttribute')
+  async findAll() {
+    return await this.catAttRepository.createQueryBuilder('categoriesAttribute')
     .leftJoinAndSelect('categoriesAttribute.categoryId', 'categoryId')
     .leftJoinAndSelect('categoriesAttribute.attributeId', 'attributeId')
     .getMany();
   }
 
-  findOneById(id: number) {
-    return this.catAttRepository.createQueryBuilder('categoriesAttribute')
+  async findOneById(id: number) {
+    return await this.catAttRepository.createQueryBuilder('categoriesAttribute')
     .leftJoinAndSelect('categoriesAttribute.categoryId', 'categoryId')
     .leftJoinAndSelect('categoriesAttribute.attributeId', 'attributeId')
     .where('categoriesAttribute.id = :id', {id})
     .getOne();
   }
 
-  findOneByCategoryId(id: number) {
-    return this.catAttRepository.createQueryBuilder('categoriesAttribute')
+  async findOneByCategoryId(id: number) {
+    return await this.catAttRepository.createQueryBuilder('categoriesAttribute')
     .leftJoinAndSelect('categoriesAttribute.categoryId', 'categoryId')
     .leftJoinAndSelect('categoriesAttribute.attributeId', 'attributeId')
     .where('categoriesAttribute.categoryId = :id', {id})
     .getMany();
   }
 
-  findOneByAttributeId(id: number) {
-    return this.catAttRepository.createQueryBuilder('categoriesAttribute')
+  async findOneByAttributeId(id: number) {
+    return await this.catAttRepository.createQueryBuilder('categoriesAttribute')
     .leftJoinAndSelect('categoriesAttribute.categoryId', 'categoryId')
     .leftJoinAndSelect('categoriesAttribute.attributeId', 'attributeId')
     .where('categoriesAttribute.attributeId = :id', {id})

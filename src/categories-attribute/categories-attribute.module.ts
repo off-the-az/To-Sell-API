@@ -7,6 +7,7 @@ import { CategoriesAttribute } from './entities/categories-attribute.entity';
 @Module({
   imports: [TypeOrmModule.forFeature([CategoriesAttribute])],
   controllers: [CategoriesAttributeController],
-  providers: [CategoriesAttributeService]
+  providers: [CategoriesAttributeService],
+  exports: [CategoriesAttributeService]
 })
 export class CategoriesAttributeModule {}
