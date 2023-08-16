@@ -1,3 +1,4 @@
+import { OrderStatus } from "src/order-status/entities/order-status.entity";
 import { User } from "src/user/entities/user.entity";
 import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 
@@ -19,4 +20,7 @@ export class Ticket {
         default: () => 'NOW()',
       })
     date: string;
+    @ManyToOne(() => OrderStatus, (orderStatus) => orderStatus.id)
+    @JoinColumn({ name: 'orderStatus'})
+    orderStatus: number;
 }
