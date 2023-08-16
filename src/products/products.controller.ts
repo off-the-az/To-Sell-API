@@ -21,10 +21,14 @@ export class ProductsController {
   findAll() {
     return this.productsService.findAll();
   }
-  @Roles(Role.User, Role.Seller)
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.productsService.findOne(+id);
+    return this.productsService.findOneById(+id);
+  }
+  @Get('byCategory/:id')
+  async findOneBycategory(@Param('id') id: string) {
+    const products = await this.productsService.findOneByCategoriesId(+id);
+    return products.map(product => product.productId);
   }
   @Roles(Role.Seller)
   @Put(':id')

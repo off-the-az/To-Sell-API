@@ -4,5 +4,5 @@ export class CreateProductDto {
     priceOld: number;
     priceNew: number;
     shopId: number;
-    photoAmount: number;
+    categoryId: number;
 }

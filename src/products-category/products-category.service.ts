@@ -41,6 +41,13 @@ export class ProductsCategoryService {
     .getOne();
   }
 
+  async findAllByCategory(id: number) {
+    return await this.productsCategoryRepository.createQueryBuilder('productsCategory')
+    .leftJoinAndSelect('productsCategory.productId', 'products.id')
+    .where('productsCategory.categoryId = :id', {id})
+    .getMany();
+  }
+
   async update(id: number, updateProductsCategoryDto: UpdateProductsCategoryDto) {
     try {
       await this.productsCategoryRepository.update({id: id}, updateProductsCategoryDto);

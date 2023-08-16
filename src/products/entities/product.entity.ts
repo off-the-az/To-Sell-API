@@ -1,3 +1,4 @@
+import { Category } from "src/category/entities/category.entity";
 import { Shop } from "src/shops/entities/shop.entity";
 import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 
@@ -16,6 +17,7 @@ export class Product {
     @ManyToOne(() => Shop, (shop) => shop.id)
     @JoinColumn({ name: 'shopId'})
     shopid: number;
-    @Column()
-    photoAmount: number;
+    @ManyToOne(() => Category, (category) => category.id)
+    @JoinColumn({ name: 'categoryId'})
+    categoryId: number;
 }

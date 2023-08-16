@@ -4,12 +4,14 @@ import { UpdateProductDto } from './dto/update-product.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Product } from './entities/product.entity';
 import { Repository } from 'typeorm';
+import { ProductsCategoryService } from 'src/products-category/products-category.service';
 
 @Injectable()
 export class ProductsService {
 
   constructor(
-    @InjectRepository(Product) private productRepository: Repository<Product>
+    @InjectRepository(Product) private productRepository: Repository<Product>,
+    private readonly productsCategoryService: ProductsCategoryService,
   ){}
 
   async create(createProductDto: CreateProductDto) {
@@ -32,11 +34,15 @@ export class ProductsService {
     .getMany();
   }
 
-  async findOne(id: number) {
+  async findOneById(id: number) {
     return await this.productRepository.createQueryBuilder('products')
     .leftJoinAndSelect('products.shopId', 'shops.id')
     .where('products.id = :id', {id})
     .getOne();
+  }
+
+  async findOneByCategoriesId(id: number) {
+    return await this.productsCategoryService.findAllByCategory(+id);
   }
 
   async update(id: number, updateProductDto: UpdateProductDto) {
