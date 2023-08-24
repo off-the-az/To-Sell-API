@@ -39,6 +39,8 @@ import { OrderStatus } from './order-status/entities/order-status.entity';
 import { Ticket } from './ticket/entities/ticket.entity';
 import { TicketsProductList } from './tickets-product-list/entities/tickets-product-list.entity';
 import { Cart } from './cart/entities/cart.entity';
+import { MulterModule } from '@nestjs/platform-express';
+import { FileManagerModule } from './file-manager/file-manager.module';
 dotenv.config({ path: __dirname + '/../.env' });
 
 @Module({
@@ -71,6 +73,10 @@ dotenv.config({ path: __dirname + '/../.env' });
     ProductsPhotoListModule,
     ProductsCategoryModule,
     TicketsProductListModule,
+    MulterModule.register({
+      dest: '../upload',
+    }),
+    FileManagerModule
   ],
   controllers: [AppController],
   providers: [

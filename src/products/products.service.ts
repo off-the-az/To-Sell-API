@@ -6,6 +6,7 @@ import { Product } from './entities/product.entity';
 import { Repository } from 'typeorm';
 import { ProductsCategoryService } from 'src/products-category/products-category.service';
 import { CategoriesAttributeService } from 'src/categories-attribute/categories-attribute.service';
+import * as bcrypt from 'bcrypt';
 
 @Injectable()
 export class ProductsService {

@@ -9,6 +9,7 @@ import { ProductsPhotoList } from './entities/products-photo-list.entity';
     ProductsPhotoList
   ])],
   controllers: [ProductsPhotoListController],
-  providers: [ProductsPhotoListService]
+  providers: [ProductsPhotoListService], 
+  exports: [ProductsPhotoListService],
 })
 export class ProductsPhotoListModule {}
