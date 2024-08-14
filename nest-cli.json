@@ -1,8 +1,41 @@
 {
   "$schema": "https://json.schemastore.org/nest-cli",
   "collection": "@nestjs/schematics",
-  "sourceRoot": "src",
+  "sourceRoot": "apps/to-sell/src",
   "compilerOptions": {
-    "deleteOutDir": true
+    "deleteOutDir": true,
+    "webpack": true,
+    "tsConfigPath": "apps/to-sell/tsconfig.app.json"
+  },
+  "monorepo": true,
+  "root": "apps/to-sell",
+  "projects": {
+    "to-sell": {
+      "type": "application",
+      "root": "apps/to-sell",
+      "entryFile": "main",
+      "sourceRoot": "apps/to-sell/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/to-sell/tsconfig.app.json"
+      }
+    },
+    "marketplace": {
+      "type": "application",
+      "root": "apps/marketplace",
+      "entryFile": "main",
+      "sourceRoot": "apps/marketplace/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/marketplace/tsconfig.app.json"
+      }
+    },
+    "site-constructor": {
+      "type": "application",
+      "root": "apps/site-constructor",
+      "entryFile": "main",
+      "sourceRoot": "apps/site-constructor/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/site-constructor/tsconfig.app.json"
+      }
+    }
   }
 }

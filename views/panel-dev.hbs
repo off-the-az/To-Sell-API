@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="Uk-ua">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{message}}</title>
+    <link rel="stylesheet" href="./src/style/panel.css">
+
+    <style>
+        * {
+            --lightMainColor: white;
+            --lightTextColor: black;
+            --darkMainColor: black;
+            --darkTextColor: white;
+            --headerFontSize: 40px;
+        }
+
+        body {
+            color: var(--lightTextColor);
+            background-color: var(--lightMainColor);
+        }
+
+        .navigation-list a {
+            text-decoration: none;
+            color: var(--lightTextColor);
+            margin: 25px 10px;
+            font-size: 20px;
+        }
+
+        .dev {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            body {
+                color: var(--darkTextColor);
+                background-color: var(--darkMainColor);
+            }
+
+            .navigation-list a {
+                color: var(--darkTextColor);
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="dev">
+        <div class="panel-logo">
+            <h2>To Sell</h2>
+            <p>Admin Panel</p>
+        </div>
+        <nav class="navigation-list">
+            <a href="">Category</a>
+            <a href="">News</a>
+            <a href="">Attribute</a>
+            <a href="">Static Pages</a>
+            <a href="/dev">Dev</a>
+        </nav>
+    </div>
+</body>
+
+</html>
